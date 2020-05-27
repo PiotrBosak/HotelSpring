@@ -1,11 +1,15 @@
-package pb.spring.models;
+package pb.spring.models.people;
 
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import pb.spring.models.BaseEntity;
+import pb.spring.models.auxilarytypes.Address;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
+import javax.persistence.PreUpdate;
 import java.util.Date;
 
 @MappedSuperclass
@@ -18,11 +22,10 @@ public class Person extends BaseEntity {
     private  String firstName;
     @Column(name = "last_name")
     private  String lastName;
+    @Column(name = "birth_date")
     private  Date birthDate;
-    private String country;
-    private String city;
-    private String streetName;
-    private String streetNumber;
+    @OneToOne
+    private Address address;
 
 
 }
